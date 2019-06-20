@@ -6,5 +6,5 @@ Criado para disciplina Programação Orientada a Objetos
 Alunos:
 Breno Pejon         @BPejon
 Luan            
-Michelle
+Michelle Wingter da Silva   @mwingter
 
