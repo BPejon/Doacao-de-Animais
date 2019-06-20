@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">cadastroanimais</string>
+
+    <string-array name="Especies">
+        <item>  </item>
+        <item>Cão</item>
+        <item>Gato</item>
+        <item>Coelho</item>
+        <item>Roedores</item>
+        <item>Outros</item>
+    </string-array>
+
+    <string-array name="Sexo">
+        <item>  </item>
+        <item>Fêmea</item>
+        <item>Macho</item>
+    </string-array>
+
+    <string-array name="Condicao">
+        <item>  </item>
+        <item>Castrado</item>
+        <item>Não Castrado</item>
+    </string-array>
+
+</resources>
