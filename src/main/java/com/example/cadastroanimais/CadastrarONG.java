@@ -41,17 +41,17 @@ public class CadastrarONG extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_ong);
 
-        CNPJ = (EditText) findViewById(R.id.set_cnpj);
-        NomeONG = (EditText) findViewById(R.id.set_nome);
-        Email = (EditText) findViewById(R.id.set_email);
-        Telefone = (EditText) findViewById(R.id.set_telefone);
-        NomeResp = (EditText) findViewById(R.id.set_nome_resp);
-        Endereco = (EditText) findViewById(R.id.set_endereco);
-        Cidade = (EditText) findViewById(R.id.set_cidade);
-        Senha = (EditText) findViewById(R.id.set_senha);
-        ConfirmarSenha = (EditText) findViewById(R.id.set_confirma_senha);
+        CNPJ    =            findViewById(R.id.set_cnpj);
+        NomeONG =            findViewById(R.id.set_nome);
+        Email   =            findViewById(R.id.set_email);
+        Telefone =           findViewById(R.id.set_telefone);
+        NomeResp =          findViewById(R.id.set_nome_resp);
+        Endereco =          findViewById(R.id.set_endereco);
+        Cidade =             findViewById(R.id.set_cidade);
+        Senha =             findViewById(R.id.set_senha);
+        ConfirmarSenha =    findViewById(R.id.set_confirma_senha);
 
-        CadastroOng = findViewById(R.id.cadastroBotao);
+        CadastroOng = findViewById(R.id.cadastrar);
 
         spinnerEstado= findViewById(R.id.spinner_estado);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Estados, android.R.layout.simple_spinner_item);
@@ -60,12 +60,11 @@ public class CadastrarONG extends AppCompatActivity {
         CadastroOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ValidaCadastro()) {
+                if(ValidaCadastro()){
+                    //Manda as informacoes para o banco de dados
                     FuncaoCadastrarOng();
-                    Intent trocar_tela = new Intent(CadastrarONG.this, Login.class);
-                    startActivity(trocar_tela);
-                }
 
+                }
             }
         });
     }
@@ -88,14 +87,16 @@ public class CadastrarONG extends AppCompatActivity {
 
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_LOGIN,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_ONG,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject obj = new JSONObject(response);
                             if(!obj.getBoolean("error")){
-                                Toast.makeText(getApplicationContext(), obj.getString("id_pessoa"), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                                Intent trocar_tela = new Intent(CadastrarONG.this, Login.class);
+                                startActivity(trocar_tela);
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
@@ -120,14 +121,14 @@ public class CadastrarONG extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("cnpj", cnpj);
-                params.put("nomeOng", nomeOng);
+                params.put("nome", nomeOng);
                 params.put("email", email);
                 params.put("telefone", telefone);
-                params.put("nomeResp", nomeResp);
+                params.put("responsavel", nomeResp);
                 params.put("endereco", endereco);
                 params.put("cidade", cidade);
                 params.put("email", email);
-                params.put("estado", estado);
+                params.put("uf", estado);
                 params.put("senha", senha);
 
                 return params;
@@ -158,31 +159,31 @@ public class CadastrarONG extends AppCompatActivity {
 
         boolean res = false;
 
-        if(res = isCampoVazio(cnpj)) {
+        if(res = Validacao.isCampoVazio(cnpj)) {
             NomeONG.requestFocus();
 
-        }else if (res = isCampoVazio(nomeONG)) {
+        }else if (res = Validacao.isCampoVazio(nomeONG)) {
             Endereco.requestFocus();
 
-        }else if(res = !isEmailValido(email)) {
+        }else if(res = !Validacao.isEmailValido(email)) {
             Email.requestFocus();
 
-        }else if(res = isCampoVazio(telefone)){
+        }else if(res = Validacao.isCampoVazio(telefone)){
             Telefone.requestFocus();
 
-        }else if(res = isCampoVazio(nomeResp)) {
+        }else if(res = Validacao.isCampoVazio(nomeResp)) {
             NomeResp.requestFocus();
 
-        }else if(res = isCampoVazio(endereco)){
+        }else if(res = Validacao.isCampoVazio(endereco)){
             Endereco.requestFocus();
 
-        }else if(res = isCampoVazio(cidade)){
+        }else if(res = Validacao.isCampoVazio(cidade)){
             Cidade.requestFocus();
 
-        }else if(res = isCampoVazio(senha)){
+        }else if(res = Validacao.isCampoVazio(senha)){
             Senha.requestFocus();
 
-        }else if(res = isCampoVazio(confirmarsenha)){
+        }else if(res = Validacao.isCampoVazio(confirmarsenha)){
             ConfirmarSenha.requestFocus();
         }
 
@@ -196,26 +197,17 @@ public class CadastrarONG extends AppCompatActivity {
             valido = false;
         }
 
+        //Caso confirmar senha nao for igual a senha
+        if(!senha.equals(confirmarsenha)){
+            AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+            alerta.setTitle("Aviso!");
+            alerta.setMessage("Senhas Diferentes!");
+            alerta.setNeutralButton("Ok", null);
+            alerta.show();
+            valido = false;
+        }
+
         return valido;
     }
 
-    /**
-     * Verifica se o campo está vazio
-     * @param valor string a ser avaliada
-     * @return true - campo é vazio || false - campo não é vaio
-     */
-    private boolean isCampoVazio(String valor){
-        boolean resultado = (valor.trim().isEmpty());
-        return resultado;
-    }
-
-    /**
-     * Verifica se o Email é valido
-     * @param email
-     * @return
-     */
-    private boolean isEmailValido(String email){
-        boolean resultado = (!isCampoVazio(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-        return resultado;
-    }
 }

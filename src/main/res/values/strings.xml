@@ -16,6 +16,12 @@
         <item>Macho</item>
     </string-array>
 
+    <string-array name="SexoPessoa">
+        <item>  </item>
+        <item>Feminino</item>
+        <item>Masculino</item>
+    </string-array>
+
     <string-array name="Condicao">
         <item>  </item>
         <item>Castrado</item>

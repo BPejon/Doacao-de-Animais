@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cadastroanimais">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -12,56 +12,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-
         <activity
-            android:name=".TelaCadastroPessoaFisica">
-        </activity>
+            android:name=".MenuCadastro"
+            android:parentActivityName=".Login">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Login"/>
 
-        <activity
-            android:name=".MeusPets" >
 
         </activity>
-
         <activity
-            android:name=".TelaMenu" >
+            android:name=".TelaCadastroPessoaFisica"
+            android:parentActivityName=".MenuCadastro">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuCadastro"/>
+
         </activity>
-
-        <activity
-            android:name=".Login" >
+        <activity android:name=".MeusPets"></activity>
+        <activity android:name=".TelaMenu"></activity>
+        <activity android:name=".Login">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".VisualizarAnimal"></activity>
+        <activity android:name=".ExemploAnimal"></activity>
+        <activity android:name=".CatalogoAnimais"></activity>
         <activity
-            android:name=".VisualizarAnimal" >
-
-        </activity>
-
-        <activity
-            android:name=".ExemploAnimal" >
-        </activity>
-
-        <activity
-            android:name=".CatalogoAnimais" >
-
-        </activity>
-        <activity
-            android:name=".CadastrarONG" >
-
+            android:name=".CadastrarONG"
+            android:parentActivityName=".MenuCadastro">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuCadastro"/>
         </activity>
         <activity
             android:name=".EditarCadastroAnimal"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MeusPets">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MeusPets" />
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".CadastroAnimal" />
     </application>
 
 </manifest>

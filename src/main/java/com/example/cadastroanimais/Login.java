@@ -2,6 +2,8 @@ package com.example.cadastroanimais;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +30,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
 
-    private EditText Nome;
+    private EditText Email;
     private EditText Senha;
     private Button Entrar;
     private Button Cadastrar;
@@ -38,7 +40,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Nome = findViewById(R.id.loginUsuario);
+        Email = findViewById(R.id.loginUsuario);
         Senha = findViewById(R.id.loginSenha);
         Entrar = findViewById(R.id.loginBotao);
         Cadastrar = findViewById(R.id.cadastroBotao);
@@ -53,12 +55,23 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        Cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuCadastro();
+            }
+        });
+
 
     }
 
     private void userLogin(){
+
+        if(!ValidaCadastro()){
+            return;
+        }
         //valida_login(Nome.getText().toString(), Senha.getText().toString());
-        final String email = Nome.getText().toString().trim();
+        final String email = Email.getText().toString().trim();
         final String senha = Senha.getText().toString().trim();
 
 
@@ -69,7 +82,15 @@ public class Login extends AppCompatActivity {
                         try {
                             JSONObject obj = new JSONObject(response);
                             if(!obj.getBoolean("error")){
-                                Toast.makeText(getApplicationContext(), obj.getString("id_pessoa"), Toast.LENGTH_LONG).show();
+
+                                SharedPreferences preferencias = getSharedPreferences("Pessoa", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferencias.edit();
+
+                                editor.putString("id_pessoa", obj.getString("id_pessoa") );
+                                editor.apply();
+
+                                Intent i = new Intent(Login.this, TelaMenu.class);
+                                startActivity(i);
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
@@ -97,24 +118,11 @@ public class Login extends AppCompatActivity {
 
     }
 
-    //funcao que valida o login e senha
-    public void valida_login(String usuarioLog, String senhaLog) {
-
-
-        if (usuarioLog.equals("a") && senhaLog.equals("a")) {
-            Intent intent = new Intent(this, TelaMenu.class); //SecondActivity será a pagina que abrirá ao logar
-            // pra adicionar uma nova activity, clicar em com.example.login -> new -> Activity -> empty
-            startActivity(intent);
-
-        } else {
-            System.out.println("Usuário não cadastrado");
-            AlertDialog.Builder alerta = new AlertDialog.Builder(this);
-            alerta.setTitle("Aviso:");
-            alerta.setMessage("Há campos inválidos ou em branco.");
-            alerta.setNeutralButton("Ok.", null);
-            alerta.show();
-        }
+    public void menuCadastro(){
+        Intent i = new Intent(Login.this, MenuCadastro.class);
+        startActivity(i);
     }
+
 
     public void cadastrar_usuario(View view) {
         Intent intent = new Intent(Login.this, TelaCadastroPessoaFisica.class);
@@ -130,16 +138,17 @@ public class Login extends AppCompatActivity {
     private boolean ValidaCadastro(){
         boolean valido = true;
 
-        String email = Nome.getText().toString();
+        String email = Email.getText().toString();
         String senha = Senha.getText().toString();
 
         boolean res = false;
 
-        if(res = Validacao.isCampoVazio()) {
-            email.requestFocus();
+        if(res = !(Validacao.isEmailValido(email))){
+            Email.requestFocus();
 
-        }else if (res = Validacao.isCampoVazio(nomeONG)) {
-            Endereco.requestFocus();
+        }else if (res = Validacao.isCampoVazio(senha)) {
+            Senha.requestFocus();
+        }
 
 
         //Se houver erro aparece uma mensagem

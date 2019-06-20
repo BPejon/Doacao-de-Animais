@@ -15,9 +15,9 @@
         android:text="Cadastar ONG"
         android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/principal"
-        app:layout_constraintStart_toStartOf="@+id/principal"
-        app:layout_constraintTop_toTopOf="@+id/principal" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"

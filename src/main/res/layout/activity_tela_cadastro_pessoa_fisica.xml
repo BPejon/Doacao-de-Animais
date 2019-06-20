@@ -6,24 +6,254 @@
     android:layout_height="match_parent"
     tools:context=".TelaCadastroPessoaFisica">
 
-    <EditText
-        android:id="@+id/txtCadastroTitulo"
-        android:layout_width="267dp"
-        android:layout_height="47dp"
+
+    <TextView
+        android:id="@+id/titleCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Cadastro_de_pessoa_f_sica"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="CADASTRO DE PESSOA FISICA"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.011"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ScrollView
+        android:id="@+id/sadjd"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleCadastro">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="34dp" />
+
+            <EditText
+                android:id="@+id/editNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Digite seu nome"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="53dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtSexo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sexo"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+                <TextView
+                    android:id="@+id/txtTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Telefone"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="152dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerSexo"
+                    android:layout_width="187dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="117dp" />
+
+                <EditText
+                    android:id="@+id/editTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="(99)9999-9999"
+                    android:inputType="phone"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="171dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtCPF"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CPF"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="216dp" />
+
+            <EditText
+                android:id="@+id/editCPF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="999_999_999_99"
+                android:inputType="number"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="235dp" />
+
+            <TextView
+                android:id="@+id/txtEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Endereco"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="280dp" />
+
+            <EditText
+                android:id="@+id/editEndereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="Rua_abecede_1234"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="299dp" />
+
+            <TextView
+                android:id="@+id/txtCidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cidade"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="344dp" />
+
+            <EditText
+                android:id="@+id/editCidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Cidade"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="363dp" />
+
+            <TextView
+                android:id="@+id/txtEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estado"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="408dp" />
+
+            <EditText
+                android:id="@+id/editEstado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="Estado"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="427dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="472dp" />
+
+            <TextView
+                android:id="@+id/txtMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="491dp" />
+
+            <EditText
+                android:id="@+id/editMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Seuemail_email_com_br"
+                android:inputType="textEmailAddress"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="510dp" />
+
+            <TextView
+                android:id="@+id/txtSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Digite uma senha"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="555dp" />
+
+            <EditText
+                android:id="@+id/editSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="574dp" />
+
+            <TextView
+                android:id="@+id/txtSenha2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirme_sua_senha"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="619dp" />
+
+            <EditText
+                android:id="@+id/editSenhaConfirma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="638dp" />
+
+            <Button
+                android:id="@+id/buttonCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CADASTRAR"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="683dp" />
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
