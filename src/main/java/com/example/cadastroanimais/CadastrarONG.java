@@ -1,5 +1,6 @@
 package com.example.cadastroanimais;
 
+import android.content.Intent;
 import android.media.MediaCodec;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -51,21 +54,38 @@ public class CadastrarONG extends AppCompatActivity {
         CadastroOng = findViewById(R.id.cadastroBotao);
 
         spinnerEstado= findViewById(R.id.spinner_estado);
-
-        ValidaCadastro();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Estados, android.R.layout.simple_spinner_item);
+        spinnerEstado.setAdapter(adapter);
 
         CadastroOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FuncaoCadastrarOng();
+                if(ValidaCadastro()) {
+                    FuncaoCadastrarOng();
+                    Intent trocar_tela = new Intent(CadastrarONG.this, Login.class);
+                    startActivity(trocar_tela);
+                }
+
             }
         });
     }
 
+    /**
+     * Funcao que cadastra uma Ong em nosso banco de dados no SQL
+     */
     private void FuncaoCadastrarOng(){
-        final String cpnj = CNPJ.getText().toString().trim();
-        final String email = NomeONG.getText().toString().trim();
-        final String senha = Senha.getText().toString().trim();
+        int posicaospinnerEstado =  spinnerEstado.getSelectedItemPosition();
+
+        final String cnpj    =      CNPJ.getText().toString().trim();
+        final String nomeOng =      NomeONG.getText().toString();
+        final String email   =      Senha.getText().toString().trim();
+        final String telefone=      Telefone.getText().toString().trim();
+        final String nomeResp=      NomeResp.getText().toString();
+        final String endereco=      Endereco.getText().toString();
+        final String cidade  =      Cidade.getText().toString();
+        final String estado  =      spinnerEstado.getItemAtPosition(posicaospinnerEstado).toString();
+        final String senha   =      Senha.getText().toString().trim();
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_LOGIN,
@@ -90,11 +110,26 @@ public class CadastrarONG extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }){
+
+            /**
+             *
+             * @return retorna o Hashmap com os dados da ONG
+             * @throws AuthFailureError
+             */
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("cnpj", cnpj);
+                params.put("nomeOng", nomeOng);
                 params.put("email", email);
+                params.put("telefone", telefone);
+                params.put("nomeResp", nomeResp);
+                params.put("endereco", endereco);
+                params.put("cidade", cidade);
+                params.put("email", email);
+                params.put("estado", estado);
                 params.put("senha", senha);
+
                 return params;
             }
         };
@@ -103,7 +138,14 @@ public class CadastrarONG extends AppCompatActivity {
 
     }
 
-    private void ValidaCadastro(){
+    /**
+     *
+     * Verifica se todos os campos foram preenchidos
+     * @return true - Cadastro Válido || false - Cadastro Inválido
+     */
+    private boolean ValidaCadastro(){
+        boolean valido = true;
+
         String cnpj = CNPJ.getText().toString();
         String nomeONG = NomeONG.getText().toString();
         String email = Email.getText().toString();
@@ -151,13 +193,16 @@ public class CadastrarONG extends AppCompatActivity {
             alerta.setMessage("Há campos inválidos ou em branco!");
             alerta.setNeutralButton("Ok", null);
             alerta.show();
+            valido = false;
         }
+
+        return valido;
     }
 
-       /**
-     *Verifica se o campo está vazio
-     * @param string a ser avaliada
-     * @return falso se nao for vazio || true se for vazio
+    /**
+     * Verifica se o campo está vazio
+     * @param valor string a ser avaliada
+     * @return true - campo é vazio || false - campo não é vaio
      */
     private boolean isCampoVazio(String valor){
         boolean resultado = (valor.trim().isEmpty());

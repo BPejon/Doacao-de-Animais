@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -120,6 +121,40 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    /**
+     *
+     * Verifica se todos os campos foram preenchidos
+     * @return true - Cadastro Válido || false - Cadastro Inválido
+     */
+    private boolean ValidaCadastro(){
+        boolean valido = true;
+
+        String email = Nome.getText().toString();
+        String senha = Senha.getText().toString();
+
+        boolean res = false;
+
+        if(res = Validacao.isCampoVazio()) {
+            email.requestFocus();
+
+        }else if (res = Validacao.isCampoVazio(nomeONG)) {
+            Endereco.requestFocus();
+
+
+        //Se houver erro aparece uma mensagem
+        if(res){
+            AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+            alerta.setTitle("Aviso!");
+            alerta.setMessage("Há campos inválidos ou em branco!");
+            alerta.setNeutralButton("Ok", null);
+            alerta.show();
+            valido = false;
+        }
+
+        return valido;
+    }
+
 }
 
 
