@@ -1,3 +1,6 @@
+    private final int IMG_REQUEST 1;
+    private Bitmap bitmap; 
+
     private void editAnimal(){
         //fazendo a validacao dos dados nos campos
 
@@ -35,12 +38,7 @@
             attImage_ = "true";
 
             //fazendo a transformacao da imagem para string encode64, para se poder mandar a imagem para o webServer
-            Bitmap bitmap = BitmapFactory.decodeFile(imageURI.getPath() );
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-
-            byte[] array = stream.toByteArray();
-            image_ = Base64.encodeToString(array, 0);
+            final String image = imageToString(bitmap);
         }else{
             attImage_ = "false";
             image_ = "false";
@@ -101,4 +99,30 @@
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
+    }
+
+    private void selectImage(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, IMG_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+
+        if(requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null){
+            Uri path = data.getData();
+            bitmap = MediaStore.Images.Media.getBitmap( getContentResolver(), path);
+            imgView.setImageBitmap(bitmap);
+
+        }
+    }
+
+    private String imageToString(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+        byte[] array = stream.toByteArray();
+        return Base64.encodeToString(array, 0);
     }
