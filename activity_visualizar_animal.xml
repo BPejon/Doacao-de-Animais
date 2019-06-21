@@ -43,11 +43,14 @@
 
                 <ImageView
                     android:id="@+id/img_vi_animal"
-                    android:layout_width="570px"
+                    android:layout_width="match_parent"
                     android:layout_height="570px"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_vi_nome"
                     tools:srcCompat="@tools:sample/avatars[2]" />
@@ -134,12 +137,12 @@
                     android:layout_height="120dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_vi_animal">
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_idade">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -162,24 +165,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Idade:"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_vi_sexo" />
 
                 <TextView
                     android:id="@+id/lbl_vi_idade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
                     android:text="12 anos"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.071"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
                 <TextView
@@ -188,24 +188,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Sexo:"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_vi_raca" />
 
                 <TextView
                     android:id="@+id/lbl_vi_sexo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="Femêa"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Femea"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.065"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
                 <TextView
@@ -216,18 +214,19 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
                     android:text="Espécie"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_nome" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_vi_animal" />
 
                 <TextView
                     android:id="@+id/lbl_vi_especie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
                     android:text="Cachorro"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
                 <TextView
@@ -236,24 +235,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Raça"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_vi_especie" />
 
                 <TextView
                     android:id="@+id/lbl_vi_raca"
                     android:layout_width="96dp"
                     android:layout_height="20dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
                     android:text="Vira-Lata"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
                 <TextView
