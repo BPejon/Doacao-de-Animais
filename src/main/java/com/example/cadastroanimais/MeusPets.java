@@ -31,9 +31,14 @@ import java.util.Map;
 
 import static com.example.cadastroanimais.Constantes.URL_IMAGEM;
 
+/**
+ * Classe que trata dos dados dos animais vinculados a seus donos
+ */
 public class MeusPets extends AppCompatActivity {
 
-    //Classe que fará a adaptação dos contatos para um ListView personalizado
+    /**
+     *     Classe que fará a adaptação dos contatos para um ListView personalizado
+     */
     public class AnimaisAdapter extends BaseAdapter {
 
         private final ArrayList<Animal> animais;
@@ -83,10 +88,10 @@ public class MeusPets extends AppCompatActivity {
 
             //Definindo os valores para as Views
             especie.setText(animal.getEspecie());
-            idade.setText( Integer.toString( animal.getIdade() ) );
-            raca.setText( animal.getRaca() );
+            idade.setText("Idade: "+ Integer.toString( animal.getIdade() ) + " Anos" );
+            raca.setText( "Raca: "+animal.getRaca() );
             email.setText( animal.getDono().getEmail() );
-            telefone.setText( animal.getDono().getTelefone() );
+            telefone.setText( "(" + animal.getDono().getTelefone().substring(0,2) + ")" + animal.getDono().getTelefone().substring(2,7) + "-" +  animal.getDono().getTelefone().substring(7)  );
 
             //fazendo o click do botao de visualizar
             Visualizar.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +155,9 @@ public class MeusPets extends AppCompatActivity {
 
     }
 
-    //Função responsável por carregar os animais da pessoa na lista
+    /**
+     * Função responsável por carregar os animais da pessoa na lista
+     */
     private void carregaAnimais() {
 
         //pegando o id da pessoa pelo SharedPreferences

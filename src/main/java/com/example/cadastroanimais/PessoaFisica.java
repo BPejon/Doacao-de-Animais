@@ -2,7 +2,6 @@ package com.example.cadastroanimais;
 
 /**
  * Esta classe representa uma pessoa fisica, ela eh uma subclasse da classe Pessoa
- * @author ICMC
  *
  */
 public class PessoaFisica extends Pessoa {

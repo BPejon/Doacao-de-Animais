@@ -34,27 +34,12 @@
 
         <TextView
             android:id="@+id/textoEditarAnimal"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Editar Animal"
             android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/botaoRemover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Remover"
-            android:typeface="monospace" />
-
-        <Button
-            android:id="@+id/botaoFinalizarInscricao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Finalizar"
-            android:typeface="monospace" />
     </LinearLayout>
 
     <ScrollView
@@ -245,7 +230,34 @@
                 android:id="@+id/imagemAnimal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 tools:srcCompat="@tools:sample/avatars" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/botaoRemover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Remover"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/botaoFinalizarInscricao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Finalizar"
+                    android:typeface="monospace" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

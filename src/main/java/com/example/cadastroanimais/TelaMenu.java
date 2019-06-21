@@ -8,6 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Classe com 3 botões
+ * Adotar_um_pet - Vai para o catálogo para ver animais
+ * Meus_ Pets - Vai para aaba de meus pets para adoção para editá-los
+ * Cadastrar Pet - Cadastra um novo pet para adoção
+ */
 public class TelaMenu extends AppCompatActivity {
 
     private Button MEUS_PETS, Adotar, CadastrarPet;
@@ -20,6 +26,7 @@ public class TelaMenu extends AppCompatActivity {
         Adotar = findViewById(R.id.botaoAdotarPet);
         MEUS_PETS = findViewById(R.id.botaoMeusAnimais);
         CadastrarPet = findViewById(R.id.botaoDoarPet);
+
 
 
         Adotar.setOnClickListener(new View.OnClickListener() {

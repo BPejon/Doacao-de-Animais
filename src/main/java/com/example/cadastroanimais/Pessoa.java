@@ -2,7 +2,6 @@ package com.example.cadastroanimais;
 
 /**
  * Esta classe representa uma pessoa generica, nao se deve ser instanciada, eh uma classe abstrata
- * @author ICMC
  *
  */
 public abstract class Pessoa {

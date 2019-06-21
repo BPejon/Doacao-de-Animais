@@ -173,26 +173,11 @@
                 android:ems="10"
                 android:inputType="textPassword" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/cadastrar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/limpar"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="100dp"
-                    android:text="Limpar"
-                    />
-
-                <Button
-                    android:id="@+id/cadastrar"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:text="Cadastar"
-                    />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:text="Cadastar" />
 
 
         </LinearLayout>

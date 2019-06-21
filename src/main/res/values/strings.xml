@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">cadastroanimais</string>
+    <string name="app_name">Happy Pets</string>
 
     <string-array name="Especies">
         <item>  </item>
-        <item>Cão</item>
+        <item>Cao</item>
         <item>Gato</item>
         <item>Coelho</item>
         <item>Roedores</item>
@@ -12,7 +12,7 @@
 
     <string-array name="Sexo">
         <item>  </item>
-        <item>Fêmea</item>
+        <item>Femea</item>
         <item>Macho</item>
     </string-array>
 
@@ -24,8 +24,8 @@
 
     <string-array name="Condicao">
         <item>  </item>
-        <item>Castrado</item>
-        <item>Não Castrado</item>
+        <item>Reservado</item>
+        <item>Livre</item>
     </string-array>
 
     <string-array name="Estados">

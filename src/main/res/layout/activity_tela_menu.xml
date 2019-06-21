@@ -7,81 +7,49 @@
     tools:context=".TelaMenu">
 
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="426dp"
-        android:layout_height="744dp"
-        android:background="@color/colorAccent"
-        android:clickable="false"
-        android:soundEffectsEnabled="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Menutitulo"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="350dp"
+            android:layout_height="160dp"
+            android:src="@drawable/logo3"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/botaoDoarPet"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Doar um Pet"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.124" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="66dp" />
 
-    <Button
-        android:id="@+id/botaoMeusAnimais"
-        android:layout_width="201dp"
-        android:layout_height="111dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Meus Animais"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/botaoAdotarPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adotar um Pet"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="446dp" />
 
-    <Button
-        android:id="@+id/botaoAdotarPet"
-        android:layout_width="147dp"
-        android:layout_height="159dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Adotar um Pet"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/botaoMeusAnimais"
-        app:layout_constraintEnd_toStartOf="@+id/botaoDoarPet"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.176" />
+        <Button
+            android:id="@+id/botaoMeusAnimais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Meus Animais"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="150dp"
+            tools:layout_editor_absoluteY="515dp" />
+
+        <Button
+            android:id="@+id/botaoDoarPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Doar um Pet"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="243dp"
+            tools:layout_editor_absoluteY="152dp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

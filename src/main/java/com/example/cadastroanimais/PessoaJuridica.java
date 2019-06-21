@@ -3,7 +3,6 @@ package com.example.cadastroanimais;
 import java.util.InputMismatchException;
 /**
  * Esta classe representa uma pessoa juridica, ela eh uma subclasse da classe Pessoa
- * @author ICMC
  *
  */
 public class PessoaJuridica extends Pessoa{

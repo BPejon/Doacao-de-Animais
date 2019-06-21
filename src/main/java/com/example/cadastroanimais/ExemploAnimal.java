@@ -3,6 +3,9 @@ package com.example.cadastroanimais;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * Classe que serve como exemplo de janela para a list view no Catálogo
+ */
 public class ExemploAnimal extends AppCompatActivity {
 
     @Override

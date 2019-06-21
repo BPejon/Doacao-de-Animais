@@ -6,301 +6,303 @@
     android:layout_height="match_parent"
     tools:context=".VisualizarAnimal">
 
-
-    <TextView
-        android:id="@+id/lbl_vi_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Nome do animal"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/img_vi_animal"
-        android:layout_width="570px"
-        android:layout_height="570px"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_nome"
-        tools:srcCompat="@tools:sample/avatars[2]" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Colocado em Adoção por:"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-    <TextView
-        android:id="@+id/lbl_vi_resp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Nome do Responsavel"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:fontFamily="sans-serif-light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Local:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_telefone" />
-
-    <TextView
-        android:id="@+id/lbl_vi_endereco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Endereco"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/lbl_vi_estado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Estado"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_cidade" />
-
-    <TextView
-        android:id="@+id/lbl_vi_cidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Cidade"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_endereco" />
-
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_vi_animal">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textoNomeResp"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="Descricao animal, esta no scrool view. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec turpis imperdiet, mattis erat vel, aliquet nunc. Curabitur vitae commodo risus. Nam eu condimentum neque. Cras et lacinia risus. Nunc vel molestie urna. Morbi et blandit libero. Suspendisse mauris massa, semper efficitur tortor a, vestibulum egestas risus.  Phasellus ut ipsum eget orci maximus tincidunt. Sed eu lacinia nisl, a placerat sapien. Mauris laoreet libero in purus pretium, quis elementum mauris tristique. Proin fringilla ultricies velit, ut condimentum neque feugiat vitae. Praesent tincidunt, risus a condimentum consectetur, purus magna aliquam mauris, eu sodales erat ex facilisis mi. Nullam vel arcu eget." />
+                android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/lbl_vi_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Nome do animal"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/img_vi_animal"
+                    android:layout_width="match_parent"
+                    android:layout_height="570px"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_nome"
+                    tools:srcCompat="@tools:sample/avatars[2]" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Colocado em Adoção por:"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_resp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Nome do Responsavel"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Local:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_telefone" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_endereco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Endereco"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_estado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Estado"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_cidade" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_cidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Cidade"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_endereco" />
+
+                <ScrollView
+                    android:id="@+id/scrollView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_idade">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textoBreveDescricao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="Descricao animal, esta no scrool view. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec turpis imperdiet, mattis erat vel, aliquet nunc. Curabitur vitae commodo risus. Nam eu condimentum neque. Cras et lacinia risus. Nunc vel molestie urna. Morbi et blandit libero. Suspendisse mauris massa, semper efficitur tortor a, vestibulum egestas risus.  Phasellus ut ipsum eget orci maximus tincidunt. Sed eu lacinia nisl, a placerat sapien. Mauris laoreet libero in purus pretium, quis elementum mauris tristique. Proin fringilla ultricies velit, ut condimentum neque feugiat vitae. Praesent tincidunt, risus a condimentum consectetur, purus magna aliquam mauris, eu sodales erat ex facilisis mi. Nullam vel arcu eget." />
+
+                    </LinearLayout>
+                </ScrollView>
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Idade:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_sexo" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_idade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="12 anos"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Sexo:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_raca" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_sexo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Femea"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Espécie"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_vi_animal" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_especie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="Cachorro"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Raça"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_especie" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_raca"
+                    android:layout_width="96dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="Vira-Lata"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="E-Mail:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_resp" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="contato@gmail.com"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Telefone:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_vi_email" />
+
+                <TextView
+                    android:id="@+id/lbl_vi_telefone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="(11) 12345-6789"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+            </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Idade:"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_sexo" />
-
-    <TextView
-        android:id="@+id/lbl_vi_idade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="12 anos"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Sexo:"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_raca" />
-
-    <TextView
-        android:id="@+id/lbl_vi_sexo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Femêa"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Espécie"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_nome" />
-
-    <TextView
-        android:id="@+id/lbl_vi_especie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Cachorro"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Raça"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_especie" />
-
-    <TextView
-        android:id="@+id/lbl_vi_raca"
-        android:layout_width="96dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Vira-Lata"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/img_vi_animal"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="E-Mail:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_resp" />
-
-    <TextView
-        android:id="@+id/lbl_vi_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="contato@gmail.com"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Telefone:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vi_email" />
-
-    <TextView
-        android:id="@+id/lbl_vi_telefone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="(11) 12345-6789"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
 </android.support.constraint.ConstraintLayout>

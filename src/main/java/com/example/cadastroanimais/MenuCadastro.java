@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Classe que contem dois botoes:
+ * Cadastro Pessoa - Cadastra um novo usuario comum
+ * Cadastro ONG    - Cadastra uma nova ONG
+ */
 public class MenuCadastro extends AppCompatActivity {
 
     Button cadastroPessoaFisica;

@@ -34,7 +34,9 @@
 
         </activity>
 
-        <activity android:name=".TelaMenu">
+        <activity
+            android:name=".TelaMenu"
+            android:parentActivityName=".Login">
 
 
         </activity>
@@ -48,7 +50,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".VisualizarAnimal"></activity>
+        <activity android:name=".VisualizarAnimal"
+                    android:parentActivityName=".CatalogoAnimais">
+
+        </activity>
 
         <activity android:name=".ExemploAnimal"></activity>
 

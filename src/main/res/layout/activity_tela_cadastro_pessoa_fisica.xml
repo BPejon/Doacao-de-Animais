@@ -56,7 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Digite seu nome"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="53dp" />
@@ -105,7 +104,6 @@
                     android:layout_weight="1"
                     android:autofillHints=""
                     android:ems="10"
-                    android:hint="(99)9999-9999"
                     android:inputType="phone"
                     tools:layout_editor_absoluteX="2dp"
                     tools:layout_editor_absoluteY="171dp" />
@@ -126,7 +124,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="999_999_999_99"
                 android:inputType="number"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="235dp" />
@@ -145,7 +142,6 @@
                 android:layout_height="wrap_content"
                 android:autofillHints=""
                 android:ems="10"
-                android:hint="Rua_abecede_1234"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="299dp" />
@@ -163,7 +159,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Cidade"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="363dp" />
@@ -200,7 +195,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Seuemail_email_com_br"
                 android:inputType="textEmailAddress"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="510dp" />
@@ -218,7 +212,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Senha"
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="574dp" />
@@ -236,7 +229,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Senha"
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="638dp" />

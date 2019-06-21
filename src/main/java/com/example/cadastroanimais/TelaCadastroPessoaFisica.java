@@ -27,6 +27,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Tela em que é cadastrado um novo usuario comum
+ */
 public class TelaCadastroPessoaFisica extends AppCompatActivity {
     private EditText Email;
     private EditText Senha;
@@ -76,12 +79,10 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
 
     }
 
-    /*
-    ImageView imagemAnimal;
-    EditText setIdade, setNome, setBreveDescricao;
-    Button botaoFinalizar, botaoEditar;
-    Spinner spinnerEspecie, spinnerSexo, spinnerCondicao;
-    */
+    /**
+     * Funcao para validar Cadastro do usuario
+     * @return True - Cadastro Valido || False - Cadastro Inválido
+     */
     private boolean ValidaCadastro() {
         boolean valido = true;
 
@@ -231,11 +232,4 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
 
 
     }//Fim da cadastra pessoa
-
-
-    public void open_telaMenu(){
-        Intent intent = new Intent(TelaCadastroPessoaFisica.this, TelaMenu.class);
-        startActivity(intent);
-    }
-
 }

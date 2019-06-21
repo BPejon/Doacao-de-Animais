@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -39,6 +40,7 @@ public class Login extends AppCompatActivity {
     private EditText Senha;
     private Button Entrar;
     private Button Cadastrar;
+    ImageView Logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class Login extends AppCompatActivity {
         Entrar = findViewById(R.id.loginBotao);
         Cadastrar = findViewById(R.id.cadastroBotao);
 
+        Logo = findViewById(R.id.logo);
+        Logo.setImageResource(R.drawable.logo3);
 
 
         Entrar.setOnClickListener(new View.OnClickListener() {

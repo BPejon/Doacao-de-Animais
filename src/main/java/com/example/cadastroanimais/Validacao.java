@@ -3,6 +3,9 @@ package com.example.cadastroanimais;
 import android.support.v7.app.AlertDialog;
 import android.util.Patterns;
 
+/**
+ * Classe utilizana na validacao dos campos obrigatorios
+ */
 public class Validacao {
     /**
      * Verifica se o campo está vazio

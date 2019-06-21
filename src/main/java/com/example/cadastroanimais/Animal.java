@@ -1,6 +1,9 @@
 package com.example.cadastroanimais;
 
 
+/**
+ * Classe para organizar od dados dos animais para doação
+ */
 public class Animal {
 
     private int id_animal;

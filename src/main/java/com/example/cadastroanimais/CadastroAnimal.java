@@ -29,9 +29,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Cadastra um animal para ser doado
+ * Seus dados serão enviados para o banco de dados em SQL e PHP
+ * Em seguida aparecerão no catálogo de animais
+ */
 public class CadastroAnimal extends AppCompatActivity{
 
     boolean flagImagemAnimal;
@@ -43,6 +49,9 @@ public class CadastroAnimal extends AppCompatActivity{
 
     Uri imageURI;
     private static final int PICK_IMAGE = 100;
+
+    private final int IMG_REQUEST = 1;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +76,6 @@ public class CadastroAnimal extends AppCompatActivity{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerEspecie.setAdapter(adapter);
 
-        /*PEGAR INFORMACAO DO SPINNER
-        String selectec = spinnerEspecie.getSelectedItem().toString();
-        /Inicializa com o dado escolhido
-        spinnerEspecie.setSelection(3);
-        */
 
         //INICIALIZA SPINNER SEXO DO ANIMAL
         spinnerSexo = findViewById(R.id.spinnerSexoAnimal);
@@ -93,7 +97,7 @@ public class CadastroAnimal extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 flagImagemAnimal = true;
-                getImageFromAlbum();
+                selectImage();
             }
         });
 
@@ -102,7 +106,6 @@ public class CadastroAnimal extends AppCompatActivity{
             public void onClick(View v) {
 
                 if(ValidaCadastro()){
-
                     insereAnimal();
 
                 }
@@ -112,22 +115,10 @@ public class CadastroAnimal extends AppCompatActivity{
     }
 
     /**
-     *Pega uma imagem da galeria e coloca em image view
+     * Funcao que verifica se o cadastro é válido,
+     * Ou seja, se não há espaços em branco
+     * @return true - Valido || false - Invalido
      */
-    public void getImageFromAlbum() {
-        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, PICK_IMAGE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageURI = data.getData();
-            imagemAnimal.setImageURI(imageURI);
-        }
-    }
-
     private boolean ValidaCadastro() {
         boolean valido = true;
 
@@ -196,8 +187,35 @@ public class CadastroAnimal extends AppCompatActivity{
 
     }
 
+    private void selectImage(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, IMG_REQUEST);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
 
+        if(requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null){
+            Uri path = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap( getContentResolver(), path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            imagemAnimal.setImageBitmap(bitmap);
+
+        }
+    }
+
+    private String imageToString(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+
+        byte[] array = stream.toByteArray();
+        return Base64.encodeToString(array, 0);
+    }
 
     private void insereAnimal(){
         //fazendo a validacao dos dados nos campos
@@ -212,17 +230,13 @@ public class CadastroAnimal extends AppCompatActivity{
         int pos = spinnerSexo.getSelectedItemPosition();
         final String sexo = spinnerSexo.getItemAtPosition(pos).toString().trim();
         pos = spinnerCondicao.getSelectedItemPosition();
-        final String condicao = spinnerCondicao.getItemAtPosition(pos).toString();
+        final String condicao = spinnerCondicao.getItemAtPosition(pos).toString().trim();
         pos = spinnerEspecie.getSelectedItemPosition();
         final String especie = spinnerEspecie.getItemAtPosition(pos).toString();
 
-        //fazendo a transformacao da imagem para string encode64, para se poder mandar a imagem para o webServer
-        Bitmap bitmap = BitmapFactory.decodeFile(imageURI.getPath() );
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
-        byte[] array = stream.toByteArray();
-        final String image = Base64.encodeToString(array, 0);
+        //fazendo a transformacao da imagem para string encode64, para se poder mandar a imagem para o webServer
+        final String image = imageToString(bitmap);
 
         //pegando o id da pessoa pelo SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("Pessoa", Context.MODE_PRIVATE);
@@ -234,15 +248,16 @@ public class CadastroAnimal extends AppCompatActivity{
 
         }else{
             //se nao tem o sharedPreferences vai pra tela de login
-            //mudando para a tela de meus animais cadastrados
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         }
+
         final String id_pessoa = id_pessoa_;
 
 
+
         //fazendo o stringRequest para fazer o request ao WebServer
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_INSERE_ANIMAL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_INSERE_ANIMAL ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -250,7 +265,7 @@ public class CadastroAnimal extends AppCompatActivity{
                             JSONObject obj = new JSONObject(response);
                             //se nao deu erro
                             if(!obj.getBoolean("error")){
-                                Toast.makeText(getApplicationContext(), obj.getString("Animal Inserido com sucesso!"), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Animal Inserido com sucesso!", Toast.LENGTH_LONG).show();
 
                                 //mudando para a tela de meus animais cadastrados
                                 Intent intent = new Intent(CadastroAnimal.this, MeusPets.class);
@@ -261,7 +276,9 @@ public class CadastroAnimal extends AppCompatActivity{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
+
                         }
                     }
                 },
@@ -291,5 +308,6 @@ public class CadastroAnimal extends AppCompatActivity{
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
+
 
 }

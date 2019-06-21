@@ -30,9 +30,42 @@ import java.util.Map;
 
 import static com.example.cadastroanimais.Constantes.URL_IMAGEM;
 
+/**
+ * Classe que disponibiliza todos os animais disponíveis para adoção
+ * É baseado em uma List View, em que os animais serao carregados ao passo que descer na view
+ */
+
 public class CatalogoAnimais extends AppCompatActivity {
 
-    //Classe que fará a adaptação dos contatos para um ListView personalizado
+
+
+    //Array que conterá os animais exibidos na lista
+    private ArrayList<Animal> animais = new ArrayList<>();
+
+    //Lista de animais
+    private ListView listaAnimais;
+
+    //ArrayAdapter para exibir os animais no ListView Personalizado
+    private AnimaisAdapter animaisArrayAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_catalogo_animais);
+
+        //instancia a lista
+        listaAnimais = findViewById(R.id.lista_animais);
+
+        carregaAnimais();
+
+
+
+    }
+
+    /**
+     * Classe que fará a adaptação dos contatos para um ListView personalizado
+     */
+
     public class AnimaisAdapter extends BaseAdapter {
 
         private final ArrayList<Animal> animais;
@@ -81,10 +114,10 @@ public class CatalogoAnimais extends AppCompatActivity {
 
             //Definindo os valores para as Views
             especie.setText(animal.getEspecie());
-            idade.setText( Integer.toString( animal.getIdade() ) );
-            raca.setText( animal.getRaca() );
+            idade.setText("Idade: "+ Integer.toString( animal.getIdade() ) + " Anos" );
+            raca.setText( "Raca: "+animal.getRaca() );
             email.setText( animal.getDono().getEmail() );
-            telefone.setText( animal.getDono().getTelefone() );
+            telefone.setText( "(" + animal.getDono().getTelefone().substring(0,2) + ")" + animal.getDono().getTelefone().substring(2,7) + "-" +  animal.getDono().getTelefone().substring(7)  );
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -104,29 +137,6 @@ public class CatalogoAnimais extends AppCompatActivity {
 
             return view;
         }
-    }
-
-    //Array que conterá os animais exibidos na lista
-    private ArrayList<Animal> animais = new ArrayList<>();
-
-    //Lista de animais
-    private ListView listaAnimais;
-
-    //ArrayAdapter para exibir os animais no ListView Personalizado
-    private AnimaisAdapter animaisArrayAdapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalogo_animais);
-
-        //instancia a lista
-        listaAnimais = findViewById(R.id.lista_animais);
-
-        carregaAnimais();
-
-
-
     }
 
     //Função responsável por carregar os animais na lista

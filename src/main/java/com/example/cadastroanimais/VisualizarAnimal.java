@@ -33,7 +33,6 @@ public class VisualizarAnimal extends AppCompatActivity {
     TextView nomeAnimal, Especie, Raca, Sexo, Idade, NomeResp, Email, Telefone, Endereco, Cidade, Estado, Descricao ;
     ImageView ImagemAnimal;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +50,7 @@ public class VisualizarAnimal extends AppCompatActivity {
         Endereco = findViewById(R.id.lbl_vi_endereco);
         Cidade = findViewById(R.id.lbl_vi_cidade);
         Estado = findViewById(R.id.lbl_vi_estado);
-        Descricao = findViewById(R.id.textoDescricao);
+        Descricao = findViewById(R.id.textoBreveDescricao);
 
         //Image View
         ImagemAnimal = findViewById(R.id.img_vi_animal);
@@ -88,10 +87,11 @@ public class VisualizarAnimal extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
                             if(!obj.getBoolean("error")){
                                 //colocando os valores do JSON nos TextView's
+                                nomeAnimal.setText(obj.getString("nome"));
                                 Especie.setText(  obj.getString("especie"));
                                 Raca.setText( obj.getString("raca"));
                                 Sexo.setText(obj.getString("sexo"));
-                                Idade.setText( Integer.toString(obj.getInt("idade")) );
+                                Idade.setText( Integer.toString(obj.getInt("idade")) + " Anos" );
                                 NomeResp.setText(obj.getString("nome_dono"));
                                 Email.setText( obj.getString("email") );
                                 Descricao.setText(obj.getString("descricao"));
