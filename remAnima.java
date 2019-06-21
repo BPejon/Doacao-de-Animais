@@ -4,10 +4,10 @@
         //pegando o id do animal pelo SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("Animal", Context.MODE_PRIVATE);
 
-        final String id_animal;
+        String id_animal_ = "";
         if(sharedPreferences.contains("id_animal")){
 
-            id_animal = sharedPreferences.getString("id_animal","");
+            id_animal_ = sharedPreferences.getString("id_animal","");
 
         }else{
             //se nao tem o sharedPreferences vai pra tela de login
@@ -15,6 +15,8 @@
             Intent intent = new Intent(this, MeusPets.class);
             startActivity(intent);
         }
+
+        final String id_animal = id_animal_;
 
         //fazendo o stringRequest para fazer o request ao WebServer
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_LOGIN,

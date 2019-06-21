@@ -3,7 +3,6 @@
 
         //inicializando os valores
         final String nome = Nome.getText().toString();
-        final String especie = Especie.getText().toString();
         final String descricao = Descricao.getText().toString();
         final String idade = Idade.getText().toString().trim();
         final String raca = Raca.getText().toString();
@@ -13,6 +12,9 @@
         final String sexo = spinnerSexo.getItemAtPosition(pos).toString().trim();
         pos = spinnerCondicao.getSelectedItemPosition();
         final String condicao = spinnerCondicao.getItemAtPosition(pos).toString().trim();
+        pos = spinnerEspecie.getSelectedItemPosition();
+        final String especie = spinnerEspecie.getItemAtPosition(pos).toString();
+
 
         //fazendo a transformacao da imagem para string encode64, para se poder mandar a imagem para o webServer
         Bitmap bitmap = BitmapFactory.decodeFile(imageURI.getPath() );
@@ -20,22 +22,23 @@
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
         byte[] array = stream.toByteArray();
-        String image = Base64.encodeToString(array, 0);
+        final String image = Base64.encodeToString(array, 0);
 
         //pegando o id da pessoa pelo SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("Pessoa", Context.MODE_PRIVATE);
 
-        final String id_pessoa;
+        String id_pessoa_ = "";
         if(sharedPreferences.contains("id_pessoa")){
 
-            id_pessoa = sharedPreferences.getString("id_pessoa","");
+            id_pessoa_ = sharedPreferences.getString("id_pessoa","");
 
         }else{
             //se nao tem o sharedPreferences vai pra tela de login
-            //mudando para a tela de meus animais cadastrados
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         }
+
+        final String id_pessoa = id_pessoa_;
 
         
 

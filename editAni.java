@@ -3,7 +3,6 @@
 
         //inicializando os valores
         final String nome = Nome.getText().toString();
-        final String especie = Especie.getText().toString();
         final String descricao = Descricao.getText().toString();
         final String idade = Idade.getText().toString().trim();
         final String raca = Raca.getText().toString();
@@ -13,27 +12,27 @@
         final String sexo = spinnerSexo.getItemAtPosition(pos).toString().trim();
         pos = spinnerCondicao.getSelectedItemPosition();
         final String condicao = spinnerCondicao.getItemAtPosition(pos).toString().trim();
-
+        pos = spinnerEspecie.getSelectedItemPosition();
+        final String especie = spinnerEspecie.getItemAtPosition(pos).toString();
         
 
         //pegando o id do animal pelo SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("Animal", Context.MODE_PRIVATE);
 
-        final String id_animal;
+        String id_animal_ = "";
         if(sharedPreferences.contains("id_animal")){
 
-            id_animal = sharedPreferences.getString("id_animal","");
+            id_animal_ = sharedPreferences.getString("id_animal","");
 
         }else{
             //se nao tem o sharedPreferences vai pra tela de login
-            //mudando para a tela de meus animais cadastrados
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
         }
 
-        String attImage, image;
+        String attImage_ = "", image_ = "";
         if(flagImagemAnimal == true){
-            attImage = "true";
+            attImage_ = "true";
 
             //fazendo a transformacao da imagem para string encode64, para se poder mandar a imagem para o webServer
             Bitmap bitmap = BitmapFactory.decodeFile(imageURI.getPath() );
@@ -41,11 +40,16 @@
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
             byte[] array = stream.toByteArray();
-            image = Base64.encodeToString(array, 0);
+            image_ = Base64.encodeToString(array, 0);
         }else{
-            attImage = "false";
-            image = "false";
+            attImage_ = "false";
+            image_ = "false";
         }
+
+        //colocando os valores finais nas variaveis
+        final String id_animal = id_animal_;
+        final String attImage = attImage_;
+        final String image = image_;
 
         //fazendo o stringRequest para fazer o request ao WebServer
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_LOGIN,
