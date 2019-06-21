@@ -176,16 +176,10 @@
                 tools:layout_editor_absoluteX="2dp"
                 tools:layout_editor_absoluteY="408dp" />
 
-            <EditText
-                android:id="@+id/editEstado"
+            <Spinner
+                android:id="@+id/spinnerEstado"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="Estado"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="2dp"
-                tools:layout_editor_absoluteY="427dp" />
+                android:layout_height="37dp" />
 
             <Space
                 android:layout_width="match_parent"

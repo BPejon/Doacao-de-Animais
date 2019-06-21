@@ -33,7 +33,7 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
     private EditText SenhaCheck;
     private EditText Nome, Telefone, CPF, Endereco, Cidade, Estado;
     private Button ConfirmaCadastroBotao;
-    private Spinner spinnerSexo;
+    private Spinner spinnerSexo, spinnerEstado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,11 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.SexoPessoa, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSexo.setAdapter(adapter);
+
+        spinnerEstado = findViewById(R.id.spinnerEstado);
+        ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(this, R.array.Estados, android.R.layout.simple_spinner_item);
+        adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstado.setAdapter(adapt);
 
         ConfirmaCadastroBotao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,10 +103,11 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
         } else if (res = Validacao.isCampoVazio(telefone)) {
             Telefone.requestFocus();
             Telefone.setError("Erro");
-        } else if (res = Validacao.isCampoVazio(cpf)) {
-            CPF.requestFocus();
-            CPF.setError("Erro");
 
+          //Verifica se o cpf está em branco ou se está correto!
+        } else if (res = (Validacao.isCampoVazio(cpf) && !PessoaFisica.verificaCPF(cpf))) {
+            CPF.requestFocus();
+            CPF.setError("Erro Cpf inváido!");
         } else if (res = Validacao.isCampoVazio(endereco)) {
             Endereco.requestFocus();
             Endereco.setError("Erro");
@@ -169,39 +175,25 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
         final String senha =        Senha.getText().toString();
 
         int pos;
+
         pos = spinnerSexo.getSelectedItemPosition();
         final String sexo = spinnerSexo.getItemAtPosition(pos).toString();
 
+        pos = spinnerEstado.getSelectedItemPosition();
+        final String estado = spinnerEstado.getItemAtPosition(pos).toString();
 
         /**
          * Manda o registro do usuario para o banco de dados
          */
-        /*
-        private void userLogin(){
-
-            if(!ValidaCadastro()){
-                return;
-            }
-            //valida_login(Nome.getText().toString(), Senha.getText().toString());
-            final String email = Email.getText().toString().trim();
-            final String senha = Senha.getText().toString().trim();
-
-
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_LOGIN,
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.URL_PESSOA,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 if(!obj.getBoolean("error")){
-
-                                    SharedPreferences preferencias = getSharedPreferences("Pessoa", Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = preferencias.edit();
-
-                                    editor.putString("id_pessoa", obj.getString("id_pessoa") );
-                                    editor.apply();
-
-                                    Intent i = new Intent(Login.this, TelaMenu.class);
+                                    Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(TelaCadastroPessoaFisica.this, Login.class);
                                     startActivity(i);
                                 }else{
                                     Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
@@ -220,62 +212,26 @@ public class TelaCadastroPessoaFisica extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("email", email);
-                    params.put("email", email);
-                    params.put("email", email);
-                    params.put("email", email);
+                    params.put("nome", nome);
+                    params.put("telefone", telefone);
+                    params.put("cpf", cpf);
+                    params.put("endereco", endereco);
+                    params.put("cidade", cidade);
+                    params.put("uf", estado);
                     params.put("email", email);
                     params.put("senha", senha);
+                    params.put("sexo", sexo);
                     return params;
                 }
             };
 
             RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
-        }
 
-        */
+
+
     }//Fim da cadastra pessoa
 
-
-
-
-
-
-
-
-
-    public static boolean isValidEmailAddressRegex(String email) {
-        boolean isEmailIdValid = false;
-        if (email != null && email.length() > 0) {
-            String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(email);
-            if (matcher.matches()) {
-                System.out.println("Email é valido!!!!!");
-                isEmailIdValid = true;
-            }
-            else{
-                System.out.println("Email não é valido!!!!!");
-
-            }
-        }
-        return isEmailIdValid;
-    }
-
-    public boolean isValidPassword(String senha, String senhaConfirma){
-        if(senha.equals(senhaConfirma) ){
-            System.out.println("Senhas conferem!!!!!");
-            return true;
-        }
-        System.out.println("Senhas não conferem!");
-        return false;
-    }
-
-    public void cria_novo_usuario(String username, String senha){
-        //adicionar no banco de dados
-
-    }
 
     public void open_telaMenu(){
         Intent intent = new Intent(TelaCadastroPessoaFisica.this, TelaMenu.class);

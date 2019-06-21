@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Classe que Cadastra uma Ong
+ */
 public class CadastrarONG extends AppCompatActivity {
 
     Button CadastroOng;
@@ -159,7 +162,8 @@ public class CadastrarONG extends AppCompatActivity {
 
         boolean res = false;
 
-        if(res = Validacao.isCampoVazio(cnpj)) {
+        //Verifica se o CNPJ está vazio ou incorreto
+        if(res = (Validacao.isCampoVazio(cnpj) && !PessoaJuridica.verificaCNPJ(cnpj))) {
             NomeONG.requestFocus();
 
         }else if (res = Validacao.isCampoVazio(nomeONG)) {

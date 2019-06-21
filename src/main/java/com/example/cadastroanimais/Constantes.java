@@ -1,5 +1,9 @@
 package com.example.cadastroanimais;
 
+/**
+ * Constantes utilizadas na nossa aplicaçao
+ * Estao associadas a caminhos no banco de dados em SQL e scripts em PHP
+ */
 public class Constantes {
     private static final String ROOT_URL = "http://192.168.43.59/adocao/";
     public static final String ROOT_V= ROOT_URL+"v1/";

@@ -47,7 +47,7 @@ public class CadastroAnimal extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cadastro_animal);
 
 
 
@@ -128,12 +128,6 @@ public class CadastroAnimal extends AppCompatActivity{
         }
     }
 
-    /*
-    ImageView imagemAnimal;
-    EditText setIdade, setNome, setBreveDescricao;
-    Button botaoFinalizar, botaoEditar;
-    Spinner spinnerEspecie, spinnerSexo, spinnerCondicao;
-    */
     private boolean ValidaCadastro() {
         boolean valido = true;
 

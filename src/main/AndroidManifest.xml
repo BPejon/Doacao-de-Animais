@@ -18,30 +18,45 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Login"/>
-
-
         </activity>
+
         <activity
             android:name=".TelaCadastroPessoaFisica"
             android:parentActivityName=".MenuCadastro">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MenuCadastro"/>
+        </activity>
+
+        <activity
+            android:name=".MeusPets"
+            android:parentActivityName=".TelaMenu">
 
         </activity>
-        <activity android:name=".MeusPets"></activity>
-        <activity android:name=".TelaMenu"></activity>
+
+        <activity android:name=".TelaMenu">
+
+
+        </activity>
+
         <activity android:name=".Login">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".VisualizarAnimal"></activity>
+
         <activity android:name=".ExemploAnimal"></activity>
-        <activity android:name=".CatalogoAnimais"></activity>
+
+        <activity
+            android:name=".CatalogoAnimais"
+            android:parentActivityName=".TelaMenu">
+        </activity>
+
         <activity
             android:name=".CadastrarONG"
             android:parentActivityName=".MenuCadastro">
@@ -49,6 +64,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MenuCadastro"/>
         </activity>
+
         <activity
             android:name=".EditarCadastroAnimal"
             android:parentActivityName=".MeusPets">
@@ -56,7 +72,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MeusPets" />
         </activity>
-        <activity android:name=".CadastroAnimal" />
+
+        <activity
+            android:name=".CadastroAnimal"
+            android:parentActivityName=".TelaMenu">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TelaMenu"/>
+        </activity>
+
     </application>
 
 </manifest>

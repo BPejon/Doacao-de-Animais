@@ -27,6 +27,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe inicial da aplicação
+ * Carrega a tela para que o usuario insira seus dados para utilizar o aplicativo
+ * Também permite o cadastro de novos usuarios como pessoa fisica ou instituição
+ */
 public class Login extends AppCompatActivity {
 
 
